@@ -33,7 +33,6 @@ type (
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	query := r.FormValue("text")
-	user := r.FormValue("user_name")
 	client := &http.Client{}
 	path := fmt.Sprintf("%s/wiki/rest/prototype/1/search?query=%s&type=search&os_authType=basic", wikiURL, query)
 	req, err := http.NewRequest("GET", path, nil)
@@ -66,7 +65,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			link = ""
 		}
 		if page.Type == "page" {
-			s := fmt.Sprintf("@%s: %s: <%s>\n", user, page.Title, link)
+			s := fmt.Sprintf("%s: <%s>\n", page.Title, link)
 			fmt.Fprintf(w, s)
 		}
 	}
