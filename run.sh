@@ -1,4 +1,4 @@
 #!/bin/bash
 URL=${URL:-}
 AUTH=${AUTH:-}
-/usr/local/bin/wiki -url $URL -auth $AUTH
+/usr/local/bin/slacker-wiki -url $URL -auth $AUTH

@@ -21,6 +21,7 @@ type (
 
 	Page struct {
 		Title  string `json:"title"`
+		Type   string `json:"type"`
 		Author string `json:"username"`
 		Links  []Link `json:"link"`
 	}
@@ -64,8 +65,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		} else {
 			link = ""
 		}
-		s := fmt.Sprintf("@%s: %s: <%s>\n", user, page.Title, link)
-		fmt.Fprintf(w, s)
+		if page.Type == "page" {
+			s := fmt.Sprintf("@%s: %s: <%s>\n", user, page.Title, link)
+			fmt.Fprintf(w, s)
+		}
 	}
 }
 
